@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.pdf
+*.info
+*.svg
+*.png
+*.xcf
+*.jpg
+*.jpeg
+*~
