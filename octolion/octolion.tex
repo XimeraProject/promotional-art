@@ -1,0 +1,129 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{shapes}
+\usetikzlibrary{math}
+
+
+%% \foreach \n in {10,20,...,90}
+%% do something with \n ;
+
+
+
+\begin{document}
+\begin{tikzpicture}
+
+  %% Legs
+  \tikzmath{
+    \offset = .1; %% separation of legs
+    \phase1=rand*100; %% phases of legs
+    \phase2=rand*100; %% right to left, outside in.
+    \phase3=rand*100;
+    \phase4=rand*100;
+    \phase5=rand*100;
+    \phase6=rand*100;
+    \phase7=rand*100;
+    \phase8=rand*100;
+  }
+  \pgfmathsetseed{1}
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.1*\x*sin (200*\x+\phase1)-7*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!40!black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase1)-7*\offset},{-\x+5});
+
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase2)+7*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!80!yellow!40!black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase2)+7*\offset},{-\x+5});
+
+  
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase3)-5*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!60!black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase3)-5*\offset},{-\x+5});
+
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase4)+5*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!80!yellow!60!black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase4)+5*\offset},{-\x+5});
+  
+
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase5)-3*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!80!black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase5)-3*\offset},{-\x+5});
+
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase6)+3*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!80!yellow!80!black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase6)+3*\offset},{-\x+5});
+
+
+
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase7)-\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase7)-\offset},{-\x+5});
+
+  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase8)+\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!80!yellow, domain=0:4, samples=100, variable=\x]
+  plot ({.025*\x^2*sin (200*\x+\phase8)+\offset},{-\x+5});
+
+
+
+  
+  %% The main of the octolion is two stars
+  \node[
+    ultra thick,
+    star,
+    star points=11,
+    star point height=.4cm,
+    draw=black,
+    fill=black!50!brown,
+    minimum size=3cm,
+  ] at (0,5.1) {};
+
+  \node[
+    ultra thick,
+    rotate=180,
+    star,
+    star points=11,
+    star point height=.5cm,
+    draw=black,
+    fill=yellow!30!brown,
+    minimum size=3cm,
+  ] at (0,5.1) {};
+
+
+  %% Ears
+  \draw[fill=orange,ultra thick](-.6,5.8) circle (.4);
+  \draw[fill=black!50!brown,draw=none](-.6,5.8) circle (.25);
+
+  \draw[fill=orange,ultra thick](.6,5.8) circle (.4);
+  \draw[fill=black!50!brown,draw=none](.6,5.8) circle (.25);
+
+
+  %% Head of lion
+  \draw[fill=orange,draw=black,ultra thick] (0,5) ellipse (1.1cm and 1cm);
+
+
+  %% eyes
+  \draw[fill=black!50!blue,draw=black,ultra thick](-.6,5.1) circle (.2);
+  \draw[fill=white!80!blue,draw=none](-.55,5.15) circle (.07);
+
+  \draw[fill=black!50!green,draw=black,ultra thick](.6,5.1) circle (.2);
+  \draw[fill=white!80!green,draw=none](.65,5.15) circle (.07);
+  
+
+  %% mouth/nose
+  \draw[fill=white,draw=none,ultra thick] (0,4.5) ellipse (.58cm and .48cm);
+
+  \draw [rounded corners,fill=black] (-.3,4.98)--(.3,4.98)--(0,4.6)--cycle;
+
+  \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (-.22,4.3) -- (-.44,4.5);
+  \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (.22,4.3) -- (.44,4.5);
+
+ 
+  
+  
+\end{tikzpicture}
+\end{document}
