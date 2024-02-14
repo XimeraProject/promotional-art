@@ -6,11 +6,13 @@
 %% \foreach \n in {10,20,...,90}
 %% do something with \n ;
 
+  %\pgfmathsetseed{1}
 
 
-\begin{document}
-\begin{tikzpicture}
-
+%\begin{tikzpicture}
+\tikzset{
+    pics/octolion/.style={
+        code={
   %% Legs
   \tikzmath{
     \offset = .1; %% separation of legs
@@ -23,50 +25,49 @@
     \phase7=rand*100;
     \phase8=rand*100;
   }
-  \pgfmathsetseed{1}
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.1*\x*sin (200*\x+\phase1)-7*\offset},{-\x+5});
+  plot ({.1*\x*sin (200*\x+#1*\phase1)-7*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!40!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase1)-7*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase1)-7*\offset},{-\x+5});
 
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase2)+7*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase2)+7*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!yellow!40!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase2)+7*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase2)+7*\offset},{-\x+5});
 
   
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase3)-5*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase3)-5*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!60!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase3)-5*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase3)-5*\offset},{-\x+5});
 
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase4)+5*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase4)+5*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!yellow!60!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase4)+5*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase4)+5*\offset},{-\x+5});
   
 
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase5)-3*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase5)-3*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase5)-3*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase5)-3*\offset},{-\x+5});
 
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase6)+3*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase6)+3*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!yellow!80!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase6)+3*\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase6)+3*\offset},{-\x+5});
 
 
 
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase7)-\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase7)-\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase7)-\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase7)-\offset},{-\x+5});
 
   \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase8)+\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase8)+\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!yellow, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+\phase8)+\offset},{-\x+5});
+  plot ({.025*\x^2*sin (200*\x+#1*\phase8)+\offset},{-\x+5});
 
 
 
@@ -121,18 +122,15 @@
 
   \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (-.22,4.3) -- (-.44,4.5);
   \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (.22,4.3) -- (.44,4.5);
+}}}
 
- 
-  
-  
+
+
+\begin{document}
+\foreach \n in {1,...,9}
+{\begin{tikzpicture} 
+  \pic {octolion={\n}};
 \end{tikzpicture}
-
-
-
-
 \newpage
-
-bah
-
-
+}
 \end{document}
