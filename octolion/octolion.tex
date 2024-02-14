@@ -1,7 +1,10 @@
 \documentclass[tikz]{standalone}
+\usepackage{etoolbox}
 \usetikzlibrary{shapes}
 \usetikzlibrary{math}
-
+\tikzmath{
+  \offset = .1; %% separation of legs
+}
 
 %% \foreach \n in {10,20,...,90}
 %% do something with \n ;
@@ -11,68 +14,24 @@
 
 %\begin{tikzpicture}
 \tikzset{
-    pics/octolion/.style={
-        code={
-  %% Legs
-  \tikzmath{
-    \offset = .1; %% separation of legs
-    \phase1=rand*100; %% phases of legs
-    \phase2=rand*100; %% right to left, outside in.
-    \phase3=rand*100;
-    \phase4=rand*100;
-    \phase5=rand*100;
-    \phase6=rand*100;
-    \phase7=rand*100;
-    \phase8=rand*100;
-  }
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.1*\x*sin (200*\x+#1*\phase1)-7*\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!40!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase1)-7*\offset},{-\x+5});
+  pics/octolion/.style 2 args={%https://tex.stackexchange.com/questions/167556/tikz-3-0-multiple-arguments-for-pic
+    code={
+      
+  %%  Legs
+      \foreach \numleg/\mixcolor/\phaseleg in {4/40/3,3/60/37,2/80/59,1/100/99}
+      {
+  \draw[line width=10pt,line cap=round,black, smooth,domain=0:4, variable=\x]
+  plot ({.025*\x^2*sin (200*\x-#1*10+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!\mixcolor!black, domain=0:4, smooth,variable=\x]
+  plot ({.025*\x^2*sin (200*\x-#1*10+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
 
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase2)+7*\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!80!yellow!40!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase2)+7*\offset},{-\x+5});
-
+  \draw[line width=10pt,line cap=round,black, smooth, domain=0:4,variable=\x]
+  plot ({.025*\x^2*sin (200*\x-#1*10-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
+  \draw[line width=8pt,line cap=round,orange!80!yellow!\mixcolor!black,domain=0:4,smooth,variable=\x]
+        plot ({.025*\x^2*sin (200*\x-#1*10-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
+}
   
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase3)-5*\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!60!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase3)-5*\offset},{-\x+5});
-
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase4)+5*\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!80!yellow!60!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase4)+5*\offset},{-\x+5});
-  
-
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase5)-3*\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!80!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase5)-3*\offset},{-\x+5});
-
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase6)+3*\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!80!yellow!80!black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase6)+3*\offset},{-\x+5});
-
-
-
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase7)-\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase7)-\offset},{-\x+5});
-
-  \draw[line width=10pt,line cap=round,black, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase8)+\offset},{-\x+5});
-  \draw[line width=8pt,line cap=round,orange!80!yellow, domain=0:4, samples=100, variable=\x]
-  plot ({.025*\x^2*sin (200*\x+#1*\phase8)+\offset},{-\x+5});
-
-
-
-  
-  %% The main of the octolion is two stars
+  %% The mane of the octolion is two stars
   \node[
     ultra thick,
     star,
@@ -81,7 +40,7 @@
     draw=black,
     fill=black!50!brown,
     minimum size=3cm,
-  ] at (0,5.1) {};
+  ] at (0,5) {};
 
   \node[
     ultra thick,
@@ -92,7 +51,7 @@
     draw=black,
     fill=yellow!30!brown,
     minimum size=3cm,
-  ] at (0,5.1) {};
+  ] at (0,5) {};
 
 
   %% Ears
@@ -119,18 +78,18 @@
   \draw[fill=white,draw=none,ultra thick] (0,4.5) ellipse (.58cm and .48cm);
 
   \draw [rounded corners,fill=black] (-.3,4.98)--(.3,4.98)--(0,4.6)--cycle;
-
+  \ifnumgreater{#2}{0}{
   \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (-.22,4.3) -- (-.44,4.5);
-  \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (.22,4.3) -- (.44,4.5);
+      \draw[line width=2pt,rounded corners,cap=round] (0,4.7) --  (0,4.5) -- (.22,4.3) -- (.44,4.5);
+      }{}
 }}}
 
 
 
 \begin{document}
-\foreach \n in {1,...,9}
+\foreach \k in {1,...,10}
 {\begin{tikzpicture} 
-  \pic {octolion={\n}};
-\end{tikzpicture}
-\newpage
-}
+  \pic {octolion={\k}{1}};
+  \end{tikzpicture}
+ }
 \end{document}
