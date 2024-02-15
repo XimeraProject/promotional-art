@@ -1,21 +1,96 @@
-\documentclass[tikz]{standalone}
+\documentclass[tikz,graphics]{standalone}
 
 \input{octolion.tex}
-
+%% \octolion{Tenticle move}{mouth}{left eye}{right eye}
 \begin{document}
 
 
 
 
-\foreach \k in {1,...,10}
+\foreach \k in {1,...,53}
          {
-           \begin{tikzpicture}[x=1cm,y=1cm] 
+\begin{tikzpicture}[x=1cm,y=1cm] 
   \begin{scope}
     \clip(0,0) rectangle (40,30);
-    \draw[fill=white,draw=none] (0,0) rectangle (40,30);
-    \pic at (20,15) {octolion={\k}{-5+\k}{-6+\k}{-3+\k}};
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+    \pic at (40-\k/5,10) {octolion={\k}{1}{1}{1}};
   \end{scope}
-  \end{tikzpicture}
-           \newpage
-         }
+\end{tikzpicture}
+\newpage}
+
+
+\foreach \k in {54,...,60}
+         {
+\begin{tikzpicture}[x=1cm,y=1cm] 
+  \begin{scope}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+    \pic at (40-\k/5,10) {octolion={\k}{1}{\k-59}{\k-60}};
+  \end{scope}
+\end{tikzpicture}
+\newpage}
+
+
+
+
+\foreach \k in {61,...,100}
+         {
+\begin{tikzpicture}[x=1cm,y=1cm] 
+  \begin{scope}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+    \pic at (40-\k/5,10) {octolion={\k}{1}{1}{1}};
+  \end{scope}
+\end{tikzpicture}
+\newpage}
+
+\foreach \k in {101,...,110}
+         {
+\begin{tikzpicture}[x=1cm,y=1cm] 
+  \begin{scope}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+    \pic at (20,10) {octolion={\k}{-1}{1}{1}};
+  \end{scope}
+\end{tikzpicture}
+\newpage}
+
+
+
+\foreach \k in {111,...,120}
+         {
+\begin{tikzpicture}[x=1cm,y=1cm] 
+  \begin{scope}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+    \pic at (20,10) {octolion={\k}{1}{1}{1}};
+  \end{scope}
+\end{tikzpicture}
+\newpage}
+
+
+
+\foreach \k in {121,...,130}
+         {
+\begin{tikzpicture}[x=1cm,y=1cm] 
+  \begin{scope}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+         \pic[scale=\k/15-7,transform shape] at (20,10-\k+100) {
+      octolion={\k}{-1}{1}{1}
+      };
+   % \end{scope}
+  \end{scope}
+\end{tikzpicture}
+\newpage}
+
+
+
+
+
+         
+
+         
 \end{document}
+
+
