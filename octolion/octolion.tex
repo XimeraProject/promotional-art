@@ -1,9 +1,10 @@
-\documentclass[tikz]{standalone}
+
 \usepackage{etoolbox}
 \usetikzlibrary{shapes}
 \usetikzlibrary{math}
 \tikzmath{
   \offset = .1; %% separation of legs
+  \exponent = 2.5; %% flair of legs
 }
 
 %% \foreach \n in {10,20,...,90}
@@ -18,17 +19,17 @@
     code={
       
   %%  Legs
-      \foreach \numleg/\mixcolor/\phaseleg in {4/40/3,3/60/37,2/80/59,1/100/99}
+      \foreach \numleg/\mixcolor/\phaseleg in {4/40/22,3/60/73,2/80/49,1/100/80}
       {
   \draw[line width=10pt,line cap=round,black, smooth,domain=0:4, variable=\x]
-  plot ({.025*\x^2*sin (200*\x-#1*10+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
+  plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!\mixcolor!black, domain=0:4, smooth,variable=\x]
-  plot ({.025*\x^2*sin (200*\x-#1*10+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
+  plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
 
   \draw[line width=10pt,line cap=round,black, smooth, domain=0:4,variable=\x]
-  plot ({.025*\x^2*sin (200*\x-#1*10-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
+  plot ({.025*\x^\exponent*sin (200*\x-#1*11-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!yellow!\mixcolor!black,domain=0:4,smooth,variable=\x]
-        plot ({.025*\x^2*sin (200*\x-#1*10-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
+        plot ({.025*\x^\exponent*sin (200*\x-#1*11-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
 }
   
   %% The mane of the octolion is two stars
@@ -63,7 +64,7 @@
 
 
   %% Head of lion
-  \draw[fill=orange,draw=black,ultra thick] (0,5) ellipse (1.1cm and 1cm);
+  \draw[fill=orange,draw=black,ultra thick] (0,5) ellipse (1.1 and 1);
 
 
   %% eyes
@@ -83,7 +84,7 @@
   }
 
   %% mouth/nose
-  \draw[fill=white,draw=none,ultra thick] (0,4.5) ellipse (.58cm and .48cm);
+  \draw[fill=white,draw=none,ultra thick] (0,4.5) ellipse (.58 and .48);
   \draw [rounded corners,fill=black] (-.29,4.98)--(.29,4.98)--(0,4.6)--cycle;
   
   \ifnumgreater{#2}{0}{
@@ -93,14 +94,3 @@
   }
 }}}
 
-
-
-\begin{document}
-\foreach \k in {1,...,10}
-         {
-           \begin{tikzpicture} 
-             \pic {octolion={\k}{-5+\k}{-6+\k}{-3+\k}};
-           \end{tikzpicture}
-           \newpage
-         }
-\end{document}

@@ -1,0 +1,21 @@
+\documentclass[tikz]{standalone}
+
+\input{octolion.tex}
+
+\begin{document}
+
+
+
+
+\foreach \k in {1,...,10}
+         {
+           \begin{tikzpicture}[x=1cm,y=1cm] 
+  \begin{scope}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=white,draw=none] (0,0) rectangle (40,30);
+    \pic at (20,15) {octolion={\k}{-5+\k}{-6+\k}{-3+\k}};
+  \end{scope}
+  \end{tikzpicture}
+           \newpage
+         }
+\end{document}
