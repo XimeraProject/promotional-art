@@ -20,12 +20,12 @@
   %%  Legs
       \foreach \numleg/\mixcolor/\phaseleg in {4/40/22,3/60/73,2/80/49,1/100/80}
       {
-  \draw[line width=10pt,line cap=round,black, smooth,domain=0:4, variable=\x]
+  \draw[x=1cm,y=1cm,line width=10pt,line cap=round,black, smooth,domain=0:4, variable=\x]
   plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!\mixcolor!black, domain=0:4, smooth,variable=\x]
   plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+5});
 
-  \draw[line width=10pt,line cap=round,black, smooth, domain=0:4,variable=\x]
+  \draw[x=1cm,y=1cm,line width=10pt,line cap=round,black, smooth, domain=0:4,variable=\x]
   plot ({.025*\x^\exponent*sin (200*\x-#1*11-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
   \draw[line width=8pt,line cap=round,orange!80!yellow!\mixcolor!black,domain=0:4,smooth,variable=\x]
         plot ({.025*\x^\exponent*sin (200*\x-#1*11-\phaseleg)+(2*\numleg-1)*\offset},{-\x+5});
@@ -55,11 +55,11 @@
 
 
   %% Ears
-  \draw[fill=orange,ultra thick](-.6,5.8) circle (.4);
-  \draw[fill=black!50!brown,draw=none](-.6,5.8) circle (.25);
+  \draw[fill=orange,ultra thick](-.6,5.8) circle (.4cm);
+  \draw[fill=black!50!brown,draw=none](-.6,5.8) circle (.25 cm);
 
   \draw[fill=orange,ultra thick](.6,5.8) circle (.4);
-  \draw[fill=black!50!brown,draw=none](.6,5.8) circle (.25);
+  \draw[fill=black!50!brown,draw=none](.6,5.8) circle (.25 cm);
 
 
   %% Head of lion
@@ -68,7 +68,7 @@
 
   %% eyes
   \ifnumgreater{#3}{0}{
-  \draw[fill=black!50!blue,draw=black,ultra thick] (-.6,5.1) circle (.2);
+  \draw[fill=black!50!blue,draw=black,ultra thick] (-.6,5.1) circle (.2cm);
   \draw[fill=white!80!blue,draw=none] (-.55,5.15) circle (.07);
   }{
     \draw[ultra thick,cap=round] (-.4,5.1) arc(0:180:.2);
@@ -76,18 +76,18 @@
 
 
   \ifnumgreater{#4}{0}{
-  \draw[fill=black!50!green,draw=black,ultra thick](.6,5.1) circle (.2);
+  \draw[fill=black!50!green,draw=black,ultra thick](.6,5.1) circle (.2cm);
   \draw[fill=white!80!green,draw=none](.65,5.15) circle (.07);
   }{
     \draw[ultra thick,cap=round] (.8,5.1) arc(0:180:.2);
   }
 
   %% mouth/nose
-  \draw[fill=white,draw=none,ultra thick] (0,4.5) ellipse (.58 and .48);
-  \draw [rounded corners,fill=black] (-.29,4.98)--(.29,4.98)--(0,4.6)--cycle;
+  \draw[fill=white,draw=none,ultra thick] (0,4.5) ellipse (.58cm and .48cm);
+  \draw [rounded corners,fill=black] (-.29cm,4.98cm)--(.29,4.98)--(0,4.6)--cycle;
   
   \ifnumgreater{#2}{0}{
-    \draw[line width=2pt,rounded corners,cap=round] (.44,4.5) -- (.22,4.3) -- (0,4.5) --  (0,4.7) -- (0,4.7) --  (0,4.5) -- (-.22,4.3) -- (-.44,4.5);
+    \draw[line width=2pt,rounded corners,cap=round] (.44cm,4.5cm) -- (.22,4.3) -- (0,4.5) --  (0,4.7) -- (0,4.7) --  (0,4.5) -- (-.22,4.3) -- (-.44,4.5);
   }{
     \draw[line width=2pt,rounded corners,cap=round,fill=red!80!white!50!brown] (.44,4.5) -- (.22,4.3) -- (0,4.5) --  (0,4.7) -- (0,4.7) --  (0,4.5) -- (-.22,4.3) -- (-.44,4.5) -- (0,4.1) -- cycle;
   }
