@@ -3,8 +3,6 @@
 \input{octolion.tex}
 %% \octolion{Tenticle move}{mouth}{left eye}{right eye}
 
-
-
 \newcounter{frame}
 \setcounter{frame}{1}
 
@@ -13,83 +11,83 @@
 
 
 
-\foreach \k in {1,...,60}
-         {
-\begin{tikzpicture}[x=1cm,y=1cm] 
-  \begin{scope}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \pic at (40-\k/5,10) {octolion={\theframe}{1}{1}{1}};
-  \end{scope}
-\end{tikzpicture}
-\addtocounter{frame}{1}
-\newpage}
+%% \foreach \k in {1,...,60}
+%%          {
+%% \begin{tikzpicture}[x=1cm,y=1cm] 
+%%   \begin{scope}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \pic at (40-\k/5,10) {octolion={\theframe}{1}{1}{1}};
+%%   \end{scope}
+%% \end{tikzpicture}
+%% \addtocounter{frame}{1}
+%% \newpage}
 
 
-\foreach \k in {1,...,10}
-         {
-\begin{tikzpicture}[x=1cm,y=1cm] 
-  \begin{scope}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \pic at (40-12-\k/5,10) {octolion={\theframe}{1}{\k-12}{\k-10}};
-  \end{scope}
-\end{tikzpicture}
-\addtocounter{frame}{1}
-\newpage}
+%% \foreach \k in {1,...,10}
+%%          {
+%% \begin{tikzpicture}[x=1cm,y=1cm] 
+%%   \begin{scope}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \pic at (40-12-\k/5,10) {octolion={\theframe}{1}{\k-12}{\k-10}};
+%%   \end{scope}
+%% \end{tikzpicture}
+%% \addtocounter{frame}{1}
+%% \newpage}
 
 
 
 
-\foreach \k in {1,...,30}
-         {
-\begin{tikzpicture}[x=1cm,y=1cm] 
-  \begin{scope}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \pic at (40-14-\k/5,10) {octolion={\theframe}{1}{1}{1}};
-  \end{scope}
-\end{tikzpicture}
-\addtocounter{frame}{1}
-\newpage}
+%% \foreach \k in {1,...,30}
+%%          {
+%% \begin{tikzpicture}[x=1cm,y=1cm] 
+%%   \begin{scope}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \pic at (40-14-\k/5,10) {octolion={\theframe}{1}{1}{1}};
+%%   \end{scope}
+%% \end{tikzpicture}
+%% \addtocounter{frame}{1}
+%% \newpage}
 
-\foreach \k in {1,...,3}
-         {
-\begin{tikzpicture}[x=1cm,y=1cm] 
-  \begin{scope}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \pic at (20,10) {octolion={\theframe}{-1}{1}{1}};
-  \end{scope}
-\end{tikzpicture}
-\addtocounter{frame}{1}
-\newpage}
-
-
-\foreach \k in {1,...,3}
-         {
-\begin{tikzpicture}[x=1cm,y=1cm] 
-  \begin{scope}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \pic at (20,10) {octolion={\theframe}{1}{1}{1}};
-  \end{scope}
-\end{tikzpicture}
-\addtocounter{frame}{1}
-\newpage}
+%% \foreach \k in {1,...,3}
+%%          {
+%% \begin{tikzpicture}[x=1cm,y=1cm] 
+%%   \begin{scope}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \pic at (20,10) {octolion={\theframe}{-1}{1}{1}};
+%%   \end{scope}
+%% \end{tikzpicture}
+%% \addtocounter{frame}{1}
+%% \newpage}
 
 
-\foreach \k in {1,...,3}
-         {
-\begin{tikzpicture}[x=1cm,y=1cm] 
-  \begin{scope}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \pic at (20,10) {octolion={\theframe}{-1}{1}{1}};
-  \end{scope}
-\end{tikzpicture}
-\addtocounter{frame}{1}
-\newpage}
+%% \foreach \k in {1,...,3}
+%%          {
+%% \begin{tikzpicture}[x=1cm,y=1cm] 
+%%   \begin{scope}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \pic at (20,10) {octolion={\theframe}{1}{1}{1}};
+%%   \end{scope}
+%% \end{tikzpicture}
+%% \addtocounter{frame}{1}
+%% \newpage}
+
+
+%% \foreach \k in {1,...,3}
+%%          {
+%% \begin{tikzpicture}[x=1cm,y=1cm] 
+%%   \begin{scope}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \pic at (20,10) {octolion={\theframe}{-1}{1}{1}};
+%%   \end{scope}
+%% \end{tikzpicture}
+%% \addtocounter{frame}{1}
+%% \newpage}
 
          
 
@@ -97,23 +95,66 @@
 
 
 
-\foreach \k in {1,1.5,...,10}
+%% \foreach \k in {1,1.5,...,10}
+%%          {
+%% \begin{tikzpicture}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \begin{scope}[transform canvas={scale=\k}]
+%%       \tikzmath{\fastlegs={3*\theframe};}
+%%       \pic at ({20/\k},{10/\k-\k*.5}) {
+%%       octolion={\fastlegs}{-1}{1}{1}
+%%       };
+%%       \addtocounter{frame}{1}
+%%     \end{scope}
+%% \end{tikzpicture}
+
+%% \newpage}
+
+
+
+
+         
+
+         
+\foreach \k in {1,0,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
          {
 \begin{tikzpicture}
     \clip(0,0) rectangle (40,30);
     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \begin{scope}[transform canvas={scale=\k}]
-      \tikzmath{\fastlegs={3*\theframe};}
-      \pic at ({20/\k},{10/\k-\k*.5}) {
-      octolion={\fastlegs}{-1}{1}{1}
+    \begin{scope}[transform canvas={scale=10}]
+      \tikzmath{
+        \fastlegs={3*\theframe};
+      }
+      \pic at ({2},{1-5+.5}) {
+      octolion={\fastlegs}{\k}{1}{1}%% You cannot pass variables to the mouth..
       };
       \addtocounter{frame}{1}
     \end{scope}
 \end{tikzpicture}
-
 \newpage}
-         
 
+
+
+
+
+
+\foreach \k in {1,...,10}
+         {
+\begin{tikzpicture}
+    \clip(0,0) rectangle (40,30);
+    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+    \begin{scope}[transform canvas={scale=10}]
+      \tikzmath{
+        \fastlegs={3*\theframe};
+      }
+      \pic at ({2},{1-5+.5}) {
+      octolion={\fastlegs}{-1}{1}{1}%% You cannot pass variables to the mouth..
+      };
+      \addtocounter{frame}{1}
+    \end{scope}
+\end{tikzpicture}
+\newpage}
          
 \end{document}
 
