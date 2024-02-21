@@ -1,13 +1,46 @@
 \documentclass[tikz,graphics]{standalone}
 
+\usepackage{environ}
+
 \input{octolion.tex}
 %% \octolion{Tenticle move}{mouth}{left eye}{right eye}
 
-\newcounter{frame}
-\setcounter{frame}{1}
+\newcounter{frameCount}
+\setcounter{frameCount}{1}
+
+\RenewEnviron{frame}[1]{
+\foreach \k in {1,...,#1}
+{
+\addtocounter{frameCount}{1}
+\begin{tikzpicture}[x=1cm,y=1cm] 
+  \clip(-72,-40.5) rectangle (72,40.5);
+  \draw[fill=black,draw=none] (-72,-40.5) rectangle (72,40.5);
+  \BODY
+  \end{tikzpicture}
+\newpage
+}}
+
 
 
 \begin{document}
+
+%% \begin{frame}
+%%   \pic at (0,0) {octolion={\theframeCount}{1}{1}{1}};
+%% \end{frame}
+
+
+
+
+\begin{frame}{10}
+    \begin{scope}[transform canvas={scale=\k}]
+      \tikzmath{
+        \fastlegs={3*\theframeCount};
+      }
+      \pic at ({0},{0}) {
+      octolion={\fastlegs}{-1}{1}{1}%% You cannot pass variables to the mouth..
+      };
+    \end{scope}
+\end{frame}
 
 
 
@@ -15,7 +48,7 @@
 %%          {
 %% \begin{tikzpicture}[x=1cm,y=1cm] 
 %%   \begin{scope}
-%%     \clip(0,0) rectangle (40,30);
+%%     \clip(0,0) rectangle (144,81);
 %%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
 %%     \pic at (40-\k/5,10) {octolion={\theframe}{1}{1}{1}};
 %%   \end{scope}
@@ -117,44 +150,27 @@
          
 
          
-\foreach \k in {1,0,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-         {
-\begin{tikzpicture}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \begin{scope}[transform canvas={scale=10}]
-      \tikzmath{
-        \fastlegs={3*\theframe};
-      }
-      \pic at ({2},{1-5+.5}) {
-      octolion={\fastlegs}{\k}{1}{1}%% You cannot pass variables to the mouth..
-      };
-      \addtocounter{frame}{1}
-    \end{scope}
-\end{tikzpicture}
-\newpage}
+%% \foreach \k in {1,0,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+%%          {
+%% \begin{tikzpicture}
+%%     \clip(0,0) rectangle (40,30);
+%%     \draw[fill=black,draw=none] (0,0) rectangle (40,30);
+%%     \begin{scope}[transform canvas={scale=10}]
+%%       \tikzmath{
+%%         \fastlegs={3*\theframe};
+%%       }
+%%       \pic at ({2},{1-5+.5}) {
+%%       octolion={\fastlegs}{\k}{1}{1}%% You cannot pass variables to the mouth..
+%%       };
+%%       \addtocounter{frame}{1}
+%%     \end{scope}
+%% \end{tikzpicture}
+%% \newpage}
 
 
 
 
 
-
-\foreach \k in {1,...,10}
-         {
-\begin{tikzpicture}
-    \clip(0,0) rectangle (40,30);
-    \draw[fill=black,draw=none] (0,0) rectangle (40,30);
-    \begin{scope}[transform canvas={scale=10}]
-      \tikzmath{
-        \fastlegs={3*\theframe};
-      }
-      \pic at ({2},{1-5+.5}) {
-      octolion={\fastlegs}{-1}{1}{1}%% You cannot pass variables to the mouth..
-      };
-      \addtocounter{frame}{1}
-    \end{scope}
-\end{tikzpicture}
-\newpage}
          
 \end{document}
 
