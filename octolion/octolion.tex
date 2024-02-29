@@ -22,8 +22,12 @@
       {
   \draw[x=1cm,y=1cm,line width=10pt,line cap=round,black, smooth,domain=0:4, variable=\x]
   plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+0});
+  
   \draw[line width=8pt,line cap=round,orange!\mixcolor!black, domain=0:4, smooth,variable=\x]
   plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+0});
+
+\draw[line width=8pt,line cap=round,orange!\mixcolor!black, domain=0:4, smooth,variable=\x]
+  plot ({.025*\x^\exponent*sin (200*\x-#1*13+\phaseleg*27.18)-(2*\numleg-1)*\offset},{-\x+0});  
 
   \draw[x=1cm,y=1cm,line width=10pt,line cap=round,black, smooth, domain=0:4,variable=\x]
   plot ({.025*\x^\exponent*sin (200*\x-#1*11-\phaseleg)+(2*\numleg-1)*\offset},{-\x+0});
